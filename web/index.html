@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Human ONNX Web Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .panel {
+            flex: 1;
+            min-width: 300px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .panel h2 {
+            margin-top: 0;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+        
+        .controls {
+            margin-bottom: 15px;
+        }
+        
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        
+        button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        
+        #statusElement {
+            background-color: #f8f8f8;
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+        
+        canvas, video {
+            max-width: 100%;
+            border: 1px solid #ddd;
+            background-color: #f0f0f0;
+        }
+        
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Digital Human ONNX Web Demo</h1>
+    
+    <div id="statusElement">Status: Initializing...</div>
+    
+    <div class="container">
+        <div class="panel">
+            <h2>Reference Video</h2>
+            <div class="controls">
+                <input type="file" id="referenceVideo" accept="video/*">
+                <button id="processReferenceBtn" disabled>Process Reference</button>
+            </div>
+            <video id="referenceVideoElement" width="400" height="300" controls></video>
+        </div>
+        
+        <div class="panel">
+            <h2>Audio Input</h2>
+            <div class="controls">
+                <button id="startRecordingBtn" disabled>Start Recording</button>
+                <button id="stopRecordingBtn" disabled>Stop Recording</button>
+                <p>Or upload an audio file:</p>
+                <input type="file" id="audioFile" accept="audio/*">
+                <button id="generateBtn" disabled>Generate Animation</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="panel">
+        <h2>Output Animation</h2>
+        <canvas id="outputCanvas" width="400" height="400"></canvas>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/onnxruntime-web/dist/ort.min.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
