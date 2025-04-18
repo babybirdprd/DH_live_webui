@@ -53,3 +53,5 @@ mac/
 checkpoint/
 gfpgan/
 train/data/
+onnx_models/
+web/models/*.onnx
